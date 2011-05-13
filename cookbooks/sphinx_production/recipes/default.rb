@@ -4,7 +4,7 @@
 #
 
 # Set your application name here
-appname = "auxbonnesadresses"
+appname = "auxbonnesadresses_production"
 
 # Uncomment the flavor of sphinx you want to use
 flavor = "thinking_sphinx"
