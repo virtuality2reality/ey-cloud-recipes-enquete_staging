@@ -20,6 +20,9 @@ require_recipe "sphinx_production"
 #uncomment to turn on memcached
 # require_recipe "memcached"
 
+# turns on delayed_jobs
+require_recipe "delayed_job"
+
 #uncomment to run the authorized_keys recipe
 #require_recipe "authorized_keys"
 
