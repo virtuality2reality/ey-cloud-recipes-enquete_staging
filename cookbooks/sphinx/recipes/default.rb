@@ -124,19 +124,19 @@ if utility_name
         cwd "/data/#{app_name}/current"
       end
 
-      ey_cloud_report "indexing #{flavor}" do
-        message "indexing #{flavor}"
-      end
-
-      execute "#{flavor} index" do
-        command "rake #{flavor}:index"
-        user node[:owner_name]
-        environment({
-          'HOME' => "/home/#{node[:owner_name]}",
-          'RAILS_ENV' => node[:environment][:framework_env]
-        })
-        cwd "/data/#{app_name}/current"
-      end
+      # ey_cloud_report "indexing #{flavor}" do
+      #   message "indexing #{flavor}"
+      # end
+      # 
+      # execute "#{flavor} index" do
+      #   command "rake #{flavor}:index"
+      #   user node[:owner_name]
+      #   environment({
+      #     'HOME' => "/home/#{node[:owner_name]}",
+      #     'RAILS_ENV' => node[:environment][:framework_env]
+      #   })
+      #   cwd "/data/#{app_name}/current"
+      # end
 
       execute "monit reload"
 
@@ -225,19 +225,19 @@ else
         cwd "/data/#{app_name}/current"
       end
 
-      ey_cloud_report "indexing #{flavor}" do
-        message "indexing #{flavor}"
-      end
-
-      execute "#{flavor} index" do
-        command "rake #{flavor}:index"
-        user node[:owner_name]
-        environment({
-          'HOME' => "/home/#{node[:owner_name]}",
-          'RAILS_ENV' => node[:environment][:framework_env]
-        })
-        cwd "/data/#{app_name}/current"
-      end
+      # ey_cloud_report "indexing #{flavor}" do
+      #   message "indexing #{flavor}"
+      # end
+      # 
+      # execute "#{flavor} index" do
+      #   command "rake #{flavor}:index"
+      #   user node[:owner_name]
+      #   environment({
+      #     'HOME' => "/home/#{node[:owner_name]}",
+      #     'RAILS_ENV' => node[:environment][:framework_env]
+      #   })
+      #   cwd "/data/#{app_name}/current"
+      # end
 
       execute "monit reload"
 
