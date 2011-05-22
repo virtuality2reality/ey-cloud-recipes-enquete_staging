@@ -4,7 +4,7 @@
 #
 
 template "/engineyard/bin/db_backup.rb" do
-  source "db_backup.rb"
+  source "db_backup.rb.erb"
   owner "root"
   group "root"
   mode 0755
