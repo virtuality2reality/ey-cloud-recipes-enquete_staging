@@ -1,0 +1,15 @@
+#!/usr/bin/ruby
+
+file_dir = "/mnt/backups/db"
+system("mkdir -p #{file_dir}")
+commands = []
+
+@applications.each do |app_name,data|
+  backups = `sudo -i eybackup -l #{app_name}`
+  backup_name, file, db, timestamp = backups.split("\n").last.scan(/([\d]+:[^: .]+) (([^: .]+).([\dT-]+).sql.gz)/)[0]
+  file_path = "#{file_dir}/#{db}.sql.gz"
+
+  commands << "rm -f #{file_path} && sudo -i eybackup --download #{backup_name} && mv /mnt/tmp/#{file} #{file_path}"
+end
+
+exec(commands.join(" && "))
