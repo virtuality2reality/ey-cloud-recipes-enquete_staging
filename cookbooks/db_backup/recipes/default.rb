@@ -9,6 +9,6 @@ template "/engineyard/bin/db_backup.rb" do
   group "root"
   mode 0755
   variables({
-    :applications => node[:applications]
+    :applications => node[:applications].map { |app_name, data| app_name }
   })
 end
