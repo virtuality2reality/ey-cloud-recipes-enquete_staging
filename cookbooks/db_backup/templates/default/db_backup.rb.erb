@@ -3,8 +3,9 @@
 file_dir = "/mnt/backups/db"
 system("mkdir -p #{file_dir}")
 commands = []
+applications = <%= @applications.inspect %>
 
-@applications.each do |app_name,data|
+applications.each do |app_name,data|
   backups = `sudo -i eybackup -l #{app_name}`
   backup_name, file, db, timestamp = backups.split("\n").last.scan(/([\d]+:[^: .]+) (([^: .]+).([\dT-]+).sql.gz)/)[0]
   file_path = "#{file_dir}/#{db}.sql.gz"
