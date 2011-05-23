@@ -116,7 +116,7 @@ run_for_app(appname) do |app_name, data|
         })
       end
 
-      if cron_interval
+      unless cron_interval.nil?
         cron "sphinx index" do
           action  :create
           minute  "0-59/5"
