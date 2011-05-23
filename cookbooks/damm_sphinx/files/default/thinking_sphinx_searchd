@@ -39,7 +39,7 @@ fi
 
 check_config() {
   if [ ! -f $GEN_CONFIGFILE ]; then
-    $0 $1 configure
+    $0 $1 configure $FRAMEWORK_ENV
   fi
 }
 
