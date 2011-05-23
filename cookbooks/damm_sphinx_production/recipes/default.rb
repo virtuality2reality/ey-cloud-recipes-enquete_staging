@@ -1,6 +1,7 @@
 #
 # Cookbook Name:: sphinx
 # Recipe:: default
+# Source:: https://github.com/damm/ey-cloud-recipes/tree/sphinx_test/cookbooks/sphinx
 #
 
 # Set your application name here
