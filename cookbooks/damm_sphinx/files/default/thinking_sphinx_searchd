@@ -39,7 +39,8 @@ fi
 
 check_config() {
   if [ ! -f $GEN_CONFIGFILE ]; then
-    $0 $1 configure $FRAMEWORK_ENV
+    echo "Configuring your searchd indexes"
+    $COMMAND rake thinking_sphinx:configure || rake thinking_sphinx:configure >> $OUTPUT 2>&1
   fi
 }
 
