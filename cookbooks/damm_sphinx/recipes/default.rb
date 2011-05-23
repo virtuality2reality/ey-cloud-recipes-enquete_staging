@@ -17,7 +17,9 @@ flavor = "thinking_sphinx"
 # If you don't want scheduled reindexes, just leave this commented.
 #
 # Uncommenting this line as-is will reindex once every 10 minutes.
-# cron_interval = 10
+cron_interval = nil
+
+sphinx_port = 3312
 
 if ['solo', 'app_master'].include?(node[:instance_role])
   
@@ -82,6 +84,7 @@ run_for_app(appname) do |app_name, data|
         source "sphinx.yml.erb"
         variables({
           :sphinx_ip => @node['master_app_server']['private_dns_name'].nil? ? "127.0.0.1" : @node['master_app_server']['private_dns_name'],
+          :sphinx_port => sphinx_port,
           :app_name => app_name,
           :flavor => flavor.eql?("thinking_sphinx") ? "thinkingsphinx" : flavor,
           :mem_limit => 32,
@@ -96,6 +99,7 @@ run_for_app(appname) do |app_name, data|
         source "sphinx.yml.erb"
         variables({
           :sphinx_ip => "localhost",
+          :sphinx_port => sphinx_port,
           :app_name => app_name,
           :flavor => flavor.eql?("thinking_sphinx") ? "thinkingsphinx" : flavor,
           :mem_limit => 32,
@@ -112,7 +116,8 @@ run_for_app(appname) do |app_name, data|
         variables({
           :app_name => app_name,
           :user => node[:owner_name],
-          :flavor => flavor
+          :flavor => flavor,
+          :sphinx_port => sphinx_port
         })
       end
 
@@ -149,6 +154,7 @@ if ['app', 'util'].include?(node[:instance_role])
       source "sphinx.yml.erb"
       variables({
       :sphinx_ip => @node['master_app_server']['private_dns_name'].nil? ? "127.0.0.1" : @node['master_app_server']['private_dns_name'],
+      :sphinx_port => sphinx_port,
       :app_name => app_name,
       :flavor => flavor.eql?("thinking_sphinx") ? "thinkingsphinx" : flavor,
       :mem_limit => 32,
