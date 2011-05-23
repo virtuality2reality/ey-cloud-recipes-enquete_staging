@@ -17,6 +17,7 @@ require_recipe "db_backup"
 
 # uncomment to turn on thinking sphinx/ultra sphinx. Remember to edit cookbooks/sphinx/recipes/default.rb first!
 require_recipe "damm_sphinx"
+require_recipe "damm_sphinx_production"
 # require_recipe "sphinx"
 # require_recipe "sphinx_production"
 
